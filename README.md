@@ -5,15 +5,11 @@ We provide the implementaion of VPGNN model, which is the source code for submit
 The repository is organised as follows:
 - data/: the directory of data sets, and it contains the Amazon data set as the example. 
 - res/: the directory of saved models.
-- Emlp.py: the transfer function for Hawkes process.
-- data_dyn_cite.py: training data preprocessing.
-- data_tlp_cite.py: testing data preperation.
-- dgnn.py: the Hawkes process based GNN.
-- film.py: the event-conditioned transformation.
-- main_test: the testing entrance.
-- main_train: the training entrance.
-- model: the whole model of proposed TREND.
-- node_relu: the MLP of node-dynamics predictor.
+- data_process.py: data preperation for node features, lables, edges.
+- pre_train.py: DGI pre-training
+- prompt.py: make well initialized prompt be learnable vectors.
+- final_model_gnn.py: integrate the prompt and gnn into the final model.
+- main.py: prompt-based fine-tuning and final prediction.
 
 
 ## Requirements
@@ -22,15 +18,26 @@ The repository is organised as follows:
 
     pip install -r requirements.txt
 
+
+## Data
+  In VPGNN directory, to unzip the datasets, run:
+  
+    unzip /data/Amazon.zip
+    
+  To generate node feature, label, edges, run:
+  
+    python data_process.py
+    
+    
 ## Train and test
 
-  To train the model in the paper:
+  To pre-train the model in the paper:
   
-    python main_train.py
+    python pre_train.py
     
-  To test the trained model:
+  Prompt-based fine-tuning and final prediction:
   
-    python main_test.py
+    python main.py
     
 
 
