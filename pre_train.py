@@ -34,16 +34,12 @@ class SAGE(torch.nn.Module):
     def forward(self, x, adjs):
         for i, (edge_index, _, size) in enumerate(adjs):
             if i == 0:
-                # x = F.dropout(x, p=0.6, training=self.training)
                 x_target = x[:size[1]]
                 x = self.convs[0]((x, x_target), edge_index)
-                # x = F.elu(x)
                 x = torch.relu(x)
             if i == 1:
-                # x = F.dropout(x, p=0.6, training=self.training)
                 x_target = x[:size[1]]
                 x = self.convs[1]((x, x_target), edge_index)
-                # x = x.relu()
         return x
 
 
@@ -167,7 +163,6 @@ if __name__ == '__main__':
             best = loss
             best_t = epoch
             cnt_wait = 0
-            # torch.save(model.state_dict(), './res/best_gat_nodrop_{}.pkl'.format(data_name))
             torch.save(model.state_dict(), './res/care_{}.pkl'.format(args.data))
         else:
             cnt_wait += 1
