@@ -1,5 +1,5 @@
 # VPGNN: Voucher Abuse Detection with Prompt-based Fine-tuning on Graph Neural Networks
-We provide the implementaion of VPGNN model, which is the source code for CIKM 2023 ADS paper
+We provide the implementaion of VPGNN model, which is the source code for CIKM 2023 paper
 "Voucher Abuse Detection with Prompt-based Fine-tuning on Graph Neural Networks". 
 
 The repository is organised as follows:
